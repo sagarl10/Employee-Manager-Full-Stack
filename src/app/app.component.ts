@@ -46,13 +46,31 @@ export class AppComponent implements OnInit {
     }
 
     public onAddEmployee(addForm:NgForm):void{
-      document.getElementById("add-employee-form")?.click;
+      document.getElementById("add-employee-form")?.click();
       this.employeeService.addEmployee(addForm.value).subscribe(
         (response:Employee)=>{this.getEmployees();
         addForm.reset()},
         (error:HttpErrorResponse)=>alert(error.message)
       )
 
+    }
+
+    public searchEmployees(key:string){
+      let results:Employee[]=[];
+      for(let employee of this.employees){
+        if(employee.name.toLowerCase().indexOf(key.toLowerCase())!=-1 ||
+        employee.email.toLowerCase().indexOf(key.toLowerCase())!=-1 ||
+        employee.jobTitle.toLowerCase().indexOf(key.toLowerCase())!=-1 ||
+        employee.phone.toLowerCase().indexOf(key.toLowerCase())!=-1 ){
+          results.push(employee);
+        }
+      }
+      if(results.length!=0 && key!=""){
+        this.employees=results;
+      }
+      else if(key==""){
+        this.getEmployees();
+      }
     }
 
     public onUpdateEmployee(employee:Employee):void{

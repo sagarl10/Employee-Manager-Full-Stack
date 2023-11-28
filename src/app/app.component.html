@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg " style="background-color: #fc0384;">
   <a class="navbar-brand" style="color:white;">Employee Manager</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
@@ -6,20 +6,20 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
      <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-           <button class="btn btn-secondary fw-bold" type="button"  data-toggle="modal" data-target="#addEmployeeModal">
+           <button style="background-color: #eb75b0;" class="btn btn-secondary fw-bold" type="button"  data-toggle="modal" data-target="#addEmployeeModal">
               Add Employee
             </button>
         </li>
      </ul>
-     <!-- <form class="form-inline my-2 my-lg-0">
-        <input type="search"  #key="ngModel" ngModel
+     <form class="form-inline my-2 my-lg-0">
+        <input type="search"  (ngModelChange)="searchEmployees(key.value)"  #key="ngModel" ngModel
          name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
-     </form> -->
+     </form> 
   </div>
 </nav>
  
 <div class="container" id="main-container">
-<div class="row">
+<div class="row">  
   <div *ngFor="let employee of employees" class="col-md-6 col-xl-3">
      <div class="card m-b-30">
         <div class="card-body row">
